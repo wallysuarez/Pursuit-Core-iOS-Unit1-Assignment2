@@ -20,64 +20,52 @@ print("Please enter your name")
 let playerName = readLine()!
 
 print("""
-    Hello \(playerName).
+    Hello \(playerName.uppercased()).
+    
+    WELCOME TO HANGMAN!!!
+    
+    *-------+
+    |       |
+    |       😵
+    |      /[]\
+    |       /|
+    |
+    |
+    =============*
+    
     I will pick a word for you to guess.
     Pick a letter from the alphabet to begin guessing.
     If you guess wrong 8 times, then I win.
     If you can guess before then, you win!
+    LET'S GET STARTED!
     """)
 
 
 
 
-func readyToPlay() -> String? {
-    print("""
-
-Are you ready to play?
-    YES or NO
-
-""")
-    let lineIn = readLine()
-    return lineIn
-}
-
-var yesOrNo = readyToPlay()
-
-//while playGame == true {
-
-
-//==================================//
-
-let playGame = true
-
 let mysteryWord = wordBank.randomElement()!
 var mysteryArray = Array(String(mysteryWord))
 var mysteryWordArray: [String] = []
+var display = Array(repeating: "_", count: mysteryWord.count)
 
 for letter in mysteryArray {
     mysteryWordArray.append(String(letter))
 }
 
-var display = Array(repeating: "_", count: mysteryWord.count)
+var wordGuess = ""
+var characterGuess = ""
+var guessCount = 0
 
+var playGame = true
 
-
-//================================//
-
-var playerInput = Character("")
-
-
-
-let lives = 8
-let count = 0
-//
-var storedGuesses = [String]()
-
-let wrongLetter = [String]()
-
-//==================================//
-
-
-
-
-
+while playGame {
+    print("Choose a letter")
+    print(mysteryWord)
+    
+    func chooseLetter() -> String? {
+        print("Choose a letter:", terminator: " ")
+        print("\(display)")
+        let lineIn = readLine()
+        return lineIn
+    }
+break
